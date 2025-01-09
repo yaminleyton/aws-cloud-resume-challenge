@@ -5,7 +5,7 @@ async function getPageViews() {
     try {
         console.log('Fetching page views...'); // Debug log
         const response = await fetch('https://muv4euppadnmsar4jntl2sqniy0nbjrh.lambda-url.ap-northeast-1.on.aws/', {
-            method: 'POST',  // Changed from GET to POST
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
