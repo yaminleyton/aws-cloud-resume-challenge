@@ -3,8 +3,9 @@ const counters = document.querySelectorAll('.counter');
 // Function to fetch and update the count from Lambda
 async function getPageViews() {
     try {
+        console.log('Fetching page views...'); // Debug log
         const response = await fetch('https://muv4euppadnmsar4jntl2sqniy0nbjrh.lambda-url.ap-northeast-1.on.aws/', {
-            method: 'POST',
+            method: 'POST',  // Changed from GET to POST
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -12,16 +13,15 @@ async function getPageViews() {
                 action: 'increment'
             })
         });
+        console.log('Response:', response); // Debug log
         const data = await response.json();
-        console.log('Response data:', data); // Debug log
+        console.log('Data:', data); // Debug log
         
         // Update the counter element
         const counterElement = document.querySelector('.counter');
         if (counterElement) {
             counterElement.textContent = data.count;
             counterElement.setAttribute('data-target', data.count);
-        } else {
-            console.error('Counter element not found');
         }
         
         return data.count;
