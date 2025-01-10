@@ -7,7 +7,7 @@ Resources:
   ViewsTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: cloud-resume
+      TableName: cloud-resume-new
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: id
