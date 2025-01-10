@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Counter infrastructure for Cloud Resume Challenge
+
+Resources:
+  # DynamoDB Table
+  ViewsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-resume
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  # Lambda Function
+  ViewCounterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./lambda/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 30
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ViewsTable
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: POST
