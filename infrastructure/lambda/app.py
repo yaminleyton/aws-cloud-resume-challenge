@@ -9,7 +9,7 @@ class DecimalEncoder(json.JSONEncoder):
         return super(DecimalEncoder, self).default(obj)
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('cloud-resume')
+table = dynamodb.Table('cloud-resume-new')
 
 def lambda_handler(event, context):
     # Common headers
