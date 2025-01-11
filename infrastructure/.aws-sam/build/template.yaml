@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Cloud Resume API
+Resources:
+  ViewsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-resume-new
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: N
+      KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowMethods:
+        - POST
+        - OPTIONS
+        AllowHeaders:
+        - Content-Type
+        AllowOrigins:
+        - https://resume.yamincloud.click
+  ViewCounterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ViewCounterFunction
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 30
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: ViewsTable
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: POST
+            ApiId:
+              Ref: HttpApi
+    Metadata:
+      SamResourceId: ViewCounterFunction

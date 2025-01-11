@@ -4,15 +4,21 @@ const counters = document.querySelectorAll('.counter');
 async function getPageViews() {
     try {
         console.log('Fetching page views...'); // Debug log
-        const response = await fetch('https://r2s5cxd2ne.execute-api.ap-northeast-1.amazonaws.com', {
+        const response = await fetch('https://r2s5cxd2ne.execute-api.ap-northeast-1.amazonaws.com/prod', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
                 action: 'increment'
             })
         });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         console.log('Response:', response); // Debug log
         const data = await response.json();
         console.log('Data:', data); // Debug log
