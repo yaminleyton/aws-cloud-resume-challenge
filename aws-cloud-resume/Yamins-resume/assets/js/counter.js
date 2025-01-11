@@ -19,13 +19,18 @@ async function getPageViews() {
         
         console.log('Response status:', response.status);
         const data = await response.json();
-        console.log('Data:', data);
+        console.log('Full response data:', data);
         
         const counterElement = document.getElementById('counter');
+        console.log('Counter element:', counterElement);
+        
         if (counterElement) {
-            counterElement.innerText = data.count;
+            const count = parseInt(data.count) || 0;
+            console.log('Count value:', count);
+            counterElement.innerText = count;
         } else {
             console.error('Counter element not found in the DOM');
+            console.log('Document body:', document.body.innerHTML);
         }
     }
     catch (error) {
@@ -34,7 +39,7 @@ async function getPageViews() {
     }
 }
 
-// Wait for DOM to be fully loaded
+// Make sure the script runs after the DOM is loaded
 document.addEventListener('DOMContentLoaded', getPageViews);
 
 counters.forEach(async counter => {
