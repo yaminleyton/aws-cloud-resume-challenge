@@ -4,37 +4,26 @@ const counters = document.querySelectorAll('.counter');
 async function getPageViews() {
     try {
         console.log('Fetching page views...');
-        const apiUrl = 'https://r2s5cxd2ne.execute-api.ap-northeast-1.amazonaws.com/default';
+        const apiUrl = 'https://r0pw6ae2p9.execute-api.ap-northeast-1.amazonaws.com/default';
         console.log('API URL:', apiUrl);
         
         const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 action: 'increment'
             })
         });
         
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        console.log('Response:', response); // Debug log
+        console.log('Response status:', response.status);  // Debug log
         const data = await response.json();
-        console.log('Data:', data); // Debug log
+        console.log('Data:', data);  // Debug log
         
-        // Update the counter element
-        const counterElement = document.querySelector('.counter');
-        if (counterElement) {
-            counterElement.textContent = data.count;
-            counterElement.setAttribute('data-target', data.count);
-        }
-        
-        return data.count;
-    } catch (error) {
+        document.getElementById('counter').innerText = data.count;
+    }
+    catch (error) {
         console.error('Error fetching page views:', error);
         return 0;
     }
