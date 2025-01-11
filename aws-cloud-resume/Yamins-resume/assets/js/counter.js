@@ -4,7 +4,7 @@ const counters = document.querySelectorAll('.counter');
 async function getPageViews() {
     try {
         console.log('Fetching page views...'); // Debug log
-        const response = await fetch('https://r2s5cxd2ne.execute-api.ap-northeast-1.amazonaws.com/prod', {
+        const response = await fetch('https://r0pw6ae2p9.execute-api.ap-northeast-1.amazonaws.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
