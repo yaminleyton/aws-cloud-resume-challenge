@@ -3,8 +3,11 @@ const counters = document.querySelectorAll('.counter');
 // Function to fetch and update the count from Lambda
 async function getPageViews() {
     try {
-        console.log('Fetching page views...'); // Debug log
-        const response = await fetch('https://r0pw6ae2p9.execute-api.ap-northeast-1.amazonaws.com', {
+        console.log('Fetching page views...');
+        const apiUrl = 'https://r2s5cxd2ne.execute-api.ap-northeast-1.amazonaws.com/default';
+        console.log('API URL:', apiUrl);
+        
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
