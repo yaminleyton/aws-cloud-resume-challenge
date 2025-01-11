@@ -4,7 +4,7 @@ const counters = document.querySelectorAll('.counter');
 async function getPageViews() {
     try {
         console.log('Fetching page views...');
-        const apiUrl = 'https://r0pw6ae2p9.execute-api.ap-northeast-1.amazonaws.com/default';
+        const apiUrl = 'https://r0pw6ae2p9.execute-api.ap-northeast-1.amazonaws.com';
         console.log('API URL:', apiUrl);
         
         const response = await fetch(apiUrl, {
@@ -17,11 +17,16 @@ async function getPageViews() {
             })
         });
         
-        console.log('Response status:', response.status);  // Debug log
+        console.log('Response status:', response.status);
         const data = await response.json();
-        console.log('Data:', data);  // Debug log
+        console.log('Data:', data);
         
-        document.getElementById('counter').innerText = data.count;
+        const counterElement = document.getElementById('counter');
+        if (counterElement) {
+            counterElement.innerText = data.count;
+        } else {
+            console.error('Counter element not found in the DOM');
+        }
     }
     catch (error) {
         console.error('Error fetching page views:', error);
@@ -29,7 +34,7 @@ async function getPageViews() {
     }
 }
 
-// Call the function when page loads
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', getPageViews);
 
 counters.forEach(async counter => {
