@@ -1,24 +1,33 @@
 # AWS Cloud Resume Challenge
 
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
 Welcome to my **AWS Cloud Resume Challenge** project! This repository documents my journey to implement a scalable, cloud-based resume using AWS services, while demonstrating my technical and problem-solving skills in cloud engineering.
 
 ## **Architecture Overview**
 
 The architecture for this project involves several AWS services working together to deliver a highly available and responsive web application. Below is an overview of the design:
 
-1. **Frontend**:
-   - **Route 53**: Manages the domain and DNS routing.
-   - **CloudFront**: Distributes content globally with caching for better performance.
-   - **S3 Bucket**: Hosts the static files (HTML, CSS, and JavaScript) for the website.
+## Architecture
+- Frontend: HTML/CSS/JavaScript
+- Backend: AWS Lambda, DynamoDB
+- Infrastructure: S3, CloudFront, API Gateway
+- CI/CD: GitHub Actions
+- DNS: Route 53
 
-2. **Backend**:
-   - **Lambda**: Handles serverless backend logic, including processing user interactions.
-   - **DynamoDB**: Stores and retrieves the website visitor counter and other dynamic data.
+## Technologies Used
+- AWS S3 for static website hosting
+- AWS CloudFront for content delivery
+- AWS Lambda for visitor counter
+- DynamoDB for storing visitor count
+- API Gateway for REST API
+- Route 53 for DNS management
+- HTML/CSS/JavaScript for frontend
+- GitHub Actions for CI/CD
 
-3. **Integration**:
-   - The frontend communicates with the backend to display real-time visitor counts, which are fetched from DynamoDB.
-   - All updates to the visitor count are processed through a Lambda function.
-  
+
 ### **Architecture Diagram**
 
 Below is a conceptual visualization of the architecture:
@@ -29,10 +38,9 @@ Below is a conceptual visualization of the architecture:
 
 ## **Features**
 
-- **Scalable Frontend**:
+- **Infrastructure**:
   - Static website hosted on an S3 bucket, distributed via CloudFront.
   - Custom domain configured with Route 53 for professional branding.
-
   
 - **Dynamic Backend**:
   - Visitor counter functionality using DynamoDB and Lambda.
@@ -55,4 +63,3 @@ Below is a conceptual visualization of the architecture:
 - **Caching Strategies**: CloudFront improves performance but requires careful cache invalidation for updates.
 
 Feel free to explore the code and architecture, and reach out if you have any questions or feedback!
-
