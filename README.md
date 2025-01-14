@@ -1,5 +1,9 @@
 # AWS Cloud Resume Challenge
 
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
 Welcome to my **AWS Cloud Resume Challenge** project! This repository documents my journey to implement a scalable, cloud-based resume using AWS services, while demonstrating my technical and problem-solving skills in cloud engineering.
 
 ## **Architecture Overview**
@@ -59,6 +63,3 @@ Below is a conceptual visualization of the architecture:
 - **Caching Strategies**: CloudFront improves performance but requires careful cache invalidation for updates.
 
 Feel free to explore the code and architecture, and reach out if you have any questions or feedback!
-![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
